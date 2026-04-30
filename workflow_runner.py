@@ -7,6 +7,9 @@ from open_ascent import open_ascent_and_login
 from open_jobflo import open_jobflo_and_login
 
 
+CHROME_PATH = "/root/.cache/ms-playwright/chromium-1148/chrome-linux64/chrome"
+
+
 def start_virtual_display():
     import subprocess
     import time
@@ -26,9 +29,6 @@ def start_virtual_display():
         stderr=subprocess.DEVNULL,
     )
     time.sleep(2)
-
-
-CHROME_PATH = "/root/.cache/ms-playwright/chromium-1208/chrome-linux64/chrome"
 
 
 def launch_chrome():

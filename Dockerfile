@@ -1,6 +1,5 @@
 FROM python:3.12-slim
 
-# Install system dependencies for Playwright + virtual display
 RUN apt-get update && apt-get install -y \
     wget \
     curl \
@@ -11,11 +10,11 @@ RUN apt-get update && apt-get install -y \
     websockify \
     novnc \
     libnss3 \
-    libatk1.0-0 \
-    libatk-bridge2.0-0 \
+    libatk1.0-0t64 \
+    libatk-bridge2.0-0t64 \
     libdrm2 \
     libxkbcommon0 \
-    libgtk-3-0 \
+    libgtk-3-0t64 \
     libgbm1 \
     libasound2t64 \
     libxcomposite1 \
@@ -26,21 +25,15 @@ RUN apt-get update && apt-get install -y \
     libcairo2 \
     && rm -rf /var/lib/apt/lists/*
 
-# Set working directory
 WORKDIR /app
 
-# Copy requirements and install
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Install Playwright browsers only (no system deps)
 RUN playwright install chromium
 
-# Copy all app files
 COPY . .
 
-# Expose port
 EXPOSE 7860
 
-# Start the API server
 CMD ["python", "server.py"]
