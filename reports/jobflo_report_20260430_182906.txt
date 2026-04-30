@@ -1,0 +1,59 @@
+JOBFLO RECENT UPDATE REPORT
+========================================
+Timeframe: last 48 hours
+Generated: 2026-04-30 06:29 PM
+========================================
+
+1. Gabriel Aguilar Groth
+Project Status: Site Survey Scheduled
+----------------------------------------
+Big Rocks:
+- SRA case was rejected by Sunrun because the property is recorded as a multi-family property.
+- Survey photos are still needed to confirm meter count on site; Sunrun only allows properties with 4 or fewer meters.
+
+Little Rocks:
+- SRA case moved from Pending Submittal to Submitted, then to Rejected.
+- NTP case moved from Pending Submittal to Pending Planset for NTP.
+- Battery backup note logged: 1 TPW3.
+- Site survey reminder sent.
+
+Next Action:
+- Obtain survey photos to confirm the meter count and resubmit to Sunrun.
+
+Risk / Blocker:
+- Property classification as multi-family and unconfirmed meter count are blocking SRA approval.
+
+2. Virginia Brillon
+Project Status: Site Survey Scheduled
+----------------------------------------
+Big Rocks:
+- Sent site survey reminder to Sara Colledge on 04/29/2026 at 01:21pm.
+
+Little Rocks:
+- None noted in the timestamped updates.
+
+Next Action:
+- Await site survey response or completion after the reminder.
+
+Risk / Blocker:
+- None identified in recent notes
+
+3. Brandon Cantu
+Project Status: Pending Meter Spot Approval
+----------------------------------------
+Big Rocks:
+- 04/29: Permit received for AHJ Chula Vista, permit #BSA26-0197; fees paid.
+- 04/29: Site appointment completed for Brandon Cantu - Chula Vista; service status complete, photos uploaded.
+- 04/29 to 04/30: NTP moved from Pending Submittal to Submitted NTP, then to NTP Approved.
+
+Little Rocks:
+- 04/29: Customer was notified; permit-submitted email and SMS sent.
+- 04/30 11:15am: Request sent to attempt checklist call Sara Colledge.
+- 04/30 09:04am: NTP case noted as PK63ZRCNZAVZ:001-H.
+
+Next Action:
+- Attempt checklist call to Sara Colledge.
+
+Risk / Blocker:
+- None identified in recent notes
+

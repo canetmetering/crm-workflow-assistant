@@ -1,0 +1,195 @@
+ASCENTOS RECENT UPDATE REPORT
+========================================
+Timeframe: last 48 hours
+Generated: 2026-04-29 10:37 PM
+========================================
+
+1. SANG LEE
+Project ID: 41196
+----------------------------------------
+Big Rocks:
+- Contract has been processed.
+- Site Layout, Shade Report, and Proposal were uploaded.
+- Review requested for M1.
+
+Little Rocks:
+- No rep request or expectations noted.
+
+Next Action:
+- Anthony-Sgambati to review for M1.
+
+Risk / Blocker:
+- None identified in recent notes
+
+2. SON TRAN
+Project ID: 41169
+----------------------------------------
+Big Rocks:
+- Planset and BOM uploaded and ready for review.
+- Project marked M1 approved on the reps end.
+
+Little Rocks:
+- Site notes recorded: roof condition good, no MPU, MSP details 200A, battery location good, no access issues, no aerial, no gas riser violation.
+- Good to progress: Yes.
+
+Next Action:
+- Review the uploaded planset and BOM.
+
+Risk / Blocker:
+- None identified in recent notes
+
+3. JAMIL NIMEH
+Project ID: 41161
+----------------------------------------
+Big Rocks:
+- Planset was designed and reviewed; project moved into revisions and permit submission.
+- Revisions were completed, live project updated with financer, adders updated, and project moved to NTP/M1 stage.
+- M1 was submitted to the financer for review; later noted as approved on the rep’s end.
+- Design items were flagged for meter collar clearance; this was later resolved.
+- HOA verification was requested to confirm approval before installation.
+- Plan update requested to switch to Longi 405s for SoCal.
+
+Little Rocks:
+- Roof condition noted as good.
+- MSP details listed as 200A.
+- Battery location marked yes.
+- Access issues marked no.
+- Aerial marked no.
+- Gas riser violation marked no.
+- Meter collar marked yes.
+- “Express #permit” noted.
+
+Next Action:
+- Verify HOA status/approval and update the design to Longi 405s.
+
+Risk / Blocker:
+- HOA approval may be required before installation.
+
+4. JAMES SNEAD
+Project ID: 41115
+----------------------------------------
+Big Rocks:
+- Install confirmed for 5/8.
+- Material delivery confirmed for 5/7.
+- Project reviewed and cleared for installation.
+
+Little Rocks:
+- Customer confirmed by phone.
+- Job marked completed in both portals and ready to be scheduled.
+
+Next Action:
+- Proceed with installation on 5/8 and delivery on 5/7.
+
+Risk / Blocker:
+- None identified in recent notes
+
+5. James Lofton
+Project ID: 41081
+----------------------------------------
+Big Rocks:
+- HOA approval was uploaded.
+- Request made to move the project to scheduling.
+
+Little Rocks:
+- HOA timeline was asked about.
+
+Next Action:
+- Move the project to scheduling.
+
+Risk / Blocker:
+- None identified in recent notes
+
+6. DEANNA WELCH
+Project ID: 40987
+----------------------------------------
+Big Rocks:
+- Requested to get this paid in person.
+- Anthony Romero and Andrew Modesti were tagged on the payment request.
+
+Little Rocks:
+- Note was added by Jordan Trevino.
+
+Next Action:
+- Follow up with Anthony Romero and Andrew Modesti to arrange in-person payment.
+
+Risk / Blocker:
+- Payment still needs to be completed in person.
+
+7. DONNA MADDY
+Project ID: 40972
+----------------------------------------
+Big Rocks:
+- Pending M1B approval with GRDS before the project can move forward for scheduling.
+
+Little Rocks:
+- Note logged under #PIR at Tuesday 01:10 PM.
+
+Next Action:
+- Obtain M1B approval from GRDS so scheduling can proceed.
+
+Risk / Blocker:
+- Pending M1B approval with GRDS.
+
+8. PATRICK HARE
+Project ID: 40915
+----------------------------------------
+Big Rocks:
+- Additional day is needed to complete the install.
+- Request made to schedule a second install day for this project.
+
+Little Rocks:
+- Tried to confirm completion for 5/5.
+
+Next Action:
+- Confirm and schedule the second install day.
+
+Risk / Blocker:
+- Install cannot be completed in one day; second day is needed.
+
+9. BESSY COREA
+Project ID: 40765
+----------------------------------------
+Big Rocks:
+- Final inspection passed with the AHJ.
+- FSP submitted to SCE; PTO is pending.
+
+Little Rocks:
+- FSP and placard/sticker photos uploaded to the account.
+- Inspection work order recorded as passed.
+
+Next Action:
+- Await PTO from SCE.
+
+Risk / Blocker:
+- Cabinet door that opens to the MSP does not close after the backup switch installation.
+
+10. TRAVIS WOOTEN
+Project ID: 40250
+----------------------------------------
+Big Rocks:
+- Design revision request sent to ESR.
+
+Little Rocks:
+- Note tagged #design by Gerry Dewatara.
+
+Next Action:
+- Await ESR response on the design revision request.
+
+Risk / Blocker:
+- None identified in recent notes
+
+11. Michael Lyons
+Project ID: 19795
+----------------------------------------
+Big Rocks:
+- Final signed-off status is not visible in the AHJ portal.
+
+Little Rocks:
+- Alexander Green was asked to look into the missing final sign-off.
+
+Next Action:
+- Alexander Green to investigate why the final signed-off record is not appearing in the AHJ portal.
+
+Risk / Blocker:
+- Final sign-off is not visible in the AHJ portal.
+
