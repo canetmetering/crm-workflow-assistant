@@ -1,0 +1,6 @@
+.env
+ascentos_profile/
+__pycache__/
+*.pyc
+reports/
+setup_hf.py
