@@ -11,12 +11,19 @@ RUN apt-get update && apt-get install -y \
     websockify \
     novnc \
     libnss3 \
+    libatk1.0-0 \
     libatk-bridge2.0-0 \
     libdrm2 \
     libxkbcommon0 \
     libgtk-3-0 \
     libgbm1 \
-    libasound2 \
+    libasound2t64 \
+    libxcomposite1 \
+    libxdamage1 \
+    libxfixes3 \
+    libxrandr2 \
+    libpango-1.0-0 \
+    libcairo2 \
     && rm -rf /var/lib/apt/lists/*
 
 # Set working directory
@@ -26,9 +33,8 @@ WORKDIR /app
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Install Playwright browsers
+# Install Playwright browsers only (no system deps)
 RUN playwright install chromium
-RUN playwright install-deps chromium
 
 # Copy all app files
 COPY . .
