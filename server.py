@@ -20,6 +20,11 @@ class WorkflowRequest(BaseModel):
     user_id: str = None
 
 
+@app.get("/")
+def root():
+    return {"status": "ok", "service": "crm-workflow-runner"}
+
+
 @app.get("/health")
 def health():
     return {"status": "ok"}
@@ -32,7 +37,6 @@ def run_workflow(request: WorkflowRequest):
     if platform not in ["ascent", "jobflo"]:
         raise HTTPException(status_code=400, detail="Invalid platform")
 
-    # Set credentials as environment variables for the workflow
     env = os.environ.copy()
 
     if request.openai_api_key:
