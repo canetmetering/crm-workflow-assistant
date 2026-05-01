@@ -1,53 +1,82 @@
 import os
+import subprocess
+from fastapi import FastAPI, HTTPException
+from pydantic import BaseModel
 from dotenv import load_dotenv
-from playwright.sync_api import sync_playwright
-from platform_selector import choose_platform
-from ascent_workflow import run_ascent_workflow
-from jobflo_workflow import run_jobflo_workflow
-from boot_ascent_environment import boot_ascent_environment
-from boot_jobflo_environment import boot_jobflo_environment
-from open_ascent import open_ascent_and_login
-from open_jobflo import open_jobflo_and_login
 
 load_dotenv()
 
+app = FastAPI()
 
-def main():
-    platform = choose_platform()
+class WorkflowRequest(BaseModel):
+    platform: str
+    timeframe: str
+    ascent_email: str = None
+    ascent_password: str = None
+    jobflo_email: str = None
+    jobflo_password: str = None
+    openai_api_key: str = None
+    user_id: str = None
 
-    if not platform:
-        print("No platform selected.", flush=True)
-        return
+@app.get("/")
+def root():
+    return {"status": "ok", "service": "crm-workflow-runner"}
 
-    platform = platform.strip().lower()
+@app.get("/health")
+def health():
+    return {"status": "ok"}
+
+@app.post("/run-workflow")
+def run_workflow(request: WorkflowRequest):
+    platform = request.platform.lower()
+
+    if platform not in ["ascent", "jobflo"]:
+        raise HTTPException(status_code=400, detail="Invalid platform")
+
+    env = os.environ.copy()
+
+    if request.openai_api_key:
+        env["OPENAI_API_KEY"] = request.openai_api_key
 
     if platform == "ascent":
-        boot_ascent_environment()
-
-        print("\nOpen Codespaces PORTS → 6080 → vnc_auto.html", flush=True)
-        input("Press Enter when browser is open and ready...")
-
-        with sync_playwright() as p:
-            browser = p.chromium.connect_over_cdp("http://127.0.0.1:9222")
-            context = browser.contexts[0]
-            open_ascent_and_login(context)
-            run_ascent_workflow(context)
+        if not request.ascent_email or not request.ascent_password:
+            raise HTTPException(status_code=400, detail="Ascent credentials required")
+        env["ASCENT_EMAIL"] = request.ascent_email
+        env["ASCENT_PASSWORD"] = request.ascent_password
 
     elif platform == "jobflo":
-        boot_jobflo_environment()
+        if not request.jobflo_email or not request.jobflo_password:
+            raise HTTPException(status_code=400, detail="JobFlo credentials required")
+        env["JOBFLO_EMAIL"] = request.jobflo_email
+        env["JOBFLO_PASSWORD"] = request.jobflo_password
 
-        print("\nOpen Codespaces PORTS → 6080 → vnc_auto.html", flush=True)
-        input("Press Enter when browser is open and ready...")
+    env["WORKFLOW_PLATFORM"] = platform
+    env["WORKFLOW_TIMEFRAME"] = request.timeframe
+    env["WORKFLOW_USER_ID"] = request.user_id or ""
 
-        with sync_playwright() as p:
-            browser = p.chromium.connect_over_cdp("http://127.0.0.1:9222")
-            context = browser.contexts[0]
-            open_jobflo_and_login(context)
-            run_jobflo_workflow(context)
+    try:
+        result = subprocess.run(
+            ["python", "workflow_runner.py"],
+            env=env,
+            capture_output=True,
+            text=True,
+            timeout=1800
+        )
 
-    else:
-        print(f"Invalid platform: {platform}", flush=True)
+        if result.returncode != 0:
+            raise HTTPException(
+                status_code=500,
+                detail=f"Workflow failed: {result.stderr}"
+            )
 
+        return {"status": "success", "output": result.stdout}
+
+    except subprocess.TimeoutExpired:
+        raise HTTPException(status_code=504, detail="Workflow timed out")
+
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
 
 if __name__ == "__main__":
-    main()
+    import uvicorn
+    uvicorn.run(app, host="0.0.0.0", port=7860)

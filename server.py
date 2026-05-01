@@ -8,7 +8,6 @@ load_dotenv()
 
 app = FastAPI()
 
-
 class WorkflowRequest(BaseModel):
     platform: str
     timeframe: str
@@ -19,16 +18,13 @@ class WorkflowRequest(BaseModel):
     openai_api_key: str = None
     user_id: str = None
 
-
 @app.get("/")
 def root():
     return {"status": "ok", "service": "crm-workflow-runner"}
 
-
 @app.get("/health")
 def health():
     return {"status": "ok"}
-
 
 @app.post("/run-workflow")
 def run_workflow(request: WorkflowRequest):
@@ -73,17 +69,13 @@ def run_workflow(request: WorkflowRequest):
                 detail=f"Workflow failed: {result.stderr}"
             )
 
-        return {
-            "status": "success",
-            "output": result.stdout
-        }
+        return {"status": "success", "output": result.stdout}
 
     except subprocess.TimeoutExpired:
         raise HTTPException(status_code=504, detail="Workflow timed out")
 
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
-
 
 if __name__ == "__main__":
     import uvicorn
