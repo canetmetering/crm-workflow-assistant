@@ -1,6 +1,5 @@
 import os
 from dotenv import load_dotenv
-from playwright.sync_api import sync_playwright
 
 load_dotenv()
 
@@ -11,10 +10,7 @@ ASCENT_PASSWORD = os.getenv("ASCENT_PASSWORD")
 
 def is_logged_in(page):
     try:
-        page.wait_for_selector(
-            "input[type='email']",
-            timeout=3000
-        )
+        page.wait_for_selector("input[type='email']", timeout=3000)
         return False
     except Exception:
         return True
@@ -22,26 +18,18 @@ def is_logged_in(page):
 
 def logout_ascent(page):
     print("Logging out of existing session...", flush=True)
-
     try:
-        page.locator("button[aria-label='menu'], .hamburger, [class*='hamburger'], [class*='MenuIcon']").first.click(timeout=3000)
-        page.wait_for_timeout(1000)
-        page.get_by_text("Logout").click(timeout=3000)
+        page.goto(f"{ASCENT_URL}/logout", wait_until="domcontentloaded", timeout=15000)
         page.wait_for_timeout(2000)
-        print("Logged out.", flush=True)
+        print("Logged out via URL.", flush=True)
+        return True
     except Exception as e:
-        print(f"Logout via menu failed, trying direct: {e}", flush=True)
-        try:
-            page.locator("text=Logout").click(timeout=3000)
-            page.wait_for_timeout(2000)
-            print("Logged out via direct click.", flush=True)
-        except Exception as e2:
-            print(f"Logout failed entirely: {e2}", flush=True)
+        print(f"Logout via URL failed: {e}", flush=True)
+        return False
 
 
 def login_ascent(page):
     print("Logging into AscentOS...", flush=True)
-
     try:
         page.wait_for_selector("input[type='email']", timeout=10000)
         page.fill("input[type='email']", ASCENT_EMAIL)
@@ -75,7 +63,7 @@ def open_ascent_and_login(context):
     success = login_ascent(page)
 
     if not success:
-        print("Auto-login failed. Please log in manually.", flush=True)
-        input("Press Enter when logged in...")
+        print("Login failed — aborting.", flush=True)
+        raise Exception("AscentOS login failed")
 
     print("AscentOS ready.", flush=True)
