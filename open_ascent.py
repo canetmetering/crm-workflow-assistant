@@ -20,22 +20,29 @@ def logout_ascent(page):
     print("Logging out of existing session...", flush=True)
     try:
         page.goto(f"{ASCENT_URL}/logout", wait_until="domcontentloaded", timeout=15000)
-        page.wait_for_timeout(2000)
+        page.wait_for_timeout(3000)
         print("Logged out via URL.", flush=True)
         return True
     except Exception as e:
-        print(f"Logout via URL failed: {e}", flush=True)
+        print(f"Logout failed: {e}", flush=True)
         return False
 
 
 def login_ascent(page):
     print("Logging into AscentOS...", flush=True)
     try:
-        page.wait_for_selector("input[type='email']", timeout=10000)
+        # Wait for page to fully load
+        page.wait_for_load_state("networkidle", timeout=15000)
+        page.wait_for_timeout(2000)
+
+        # Try to find email input with longer timeout
+        page.wait_for_selector("input[type='email']", timeout=30000)
+        print("Login form found.", flush=True)
+
         page.fill("input[type='email']", ASCENT_EMAIL)
         page.fill("input[type='password']", ASCENT_PASSWORD)
         page.click("button[type='submit'], button:has-text('LOG IN')")
-        page.wait_for_timeout(4000)
+        page.wait_for_timeout(5000)
         print("Login submitted.", flush=True)
         return True
     except Exception as e:
@@ -53,12 +60,13 @@ def open_ascent_and_login(context):
 
     page.goto(ASCENT_URL, wait_until="domcontentloaded", timeout=60000)
     page.set_viewport_size({"width": 1600, "height": 900})
+    page.wait_for_timeout(3000)
 
     if is_logged_in(page):
         print("Already logged in — logging out first...", flush=True)
         logout_ascent(page)
         page.goto(ASCENT_URL, wait_until="domcontentloaded", timeout=60000)
-        page.wait_for_timeout(2000)
+        page.wait_for_timeout(3000)
 
     success = login_ascent(page)
 
