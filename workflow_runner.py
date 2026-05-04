@@ -27,7 +27,10 @@ def main():
                 "--window-size=1600,900",
             ]
         )
-        context = browser.new_context(viewport={"width": 1600, "height": 900})
+        # Fresh context = incognito = no saved sessions
+        context = browser.new_context(
+            viewport={"width": 1600, "height": 900}
+        )
 
         if platform == "ascent":
             open_ascent_and_login(context)
@@ -37,6 +40,7 @@ def main():
             open_jobflo_and_login(context)
             run_jobflo_workflow(context, timeframe=timeframe)
 
+        context.close()
         browser.close()
 
     print("Workflow complete.", flush=True)
