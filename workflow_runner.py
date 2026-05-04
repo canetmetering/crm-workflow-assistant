@@ -25,12 +25,25 @@ def main():
                 "--disable-dev-shm-usage",
                 "--disable-gpu",
                 "--window-size=1600,900",
+                "--disable-blink-features=AutomationControlled",
+                "--disable-infobars",
+                "--disable-extensions",
             ]
         )
-        # Fresh context = incognito = no saved sessions
+
         context = browser.new_context(
-            viewport={"width": 1600, "height": 900}
+            viewport={"width": 1600, "height": 900},
+            user_agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            java_script_enabled=True,
+            ignore_https_errors=True,
         )
+
+        # Remove webdriver flag
+        context.add_init_script("""
+            Object.defineProperty(navigator, 'webdriver', {
+                get: () => undefined
+            });
+        """)
 
         if platform == "ascent":
             open_ascent_and_login(context)
